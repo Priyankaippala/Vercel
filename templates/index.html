@@ -1,36 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatShare</title>
-    <link rel="icon" href="/static/images/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
+    <title>Face Encoding Upload</title>
 </head>
-
 <body>
-    <div class="area">
-        <div class="circles">
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-    </div>
-    <div class="context">
-        <h1>Coding Craft YT</h1>
-        <h3>Taking Your Flask Project Beyond Localhost!</h3>
-    </div>
-</body>
+    <h1>Upload an Image for Face Encoding</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="img">
+        <input type="submit" value="Upload">
+    </form>
 
+    {% if encodes %}
+        <h2>Encodings:</h2>
+        <pre>{{ encodes }}</pre>
+        <h2>Output Image:</h2>
+        <img src="{{ url_for('output_file', filename=output_image) }}" alt="Output Image" width="500px" height="500px">
+    {% endif %}
+</body>
 </html>
