@@ -1,15 +1,17 @@
-"builds": [
-  {
-    "src": "app.py",
-    "use": "@vercel/python",
-    "config": { 
-      "maxLambdaSize": "50mb",
-      "buildCommand": "./build.sh",
-      "pythonVersion": "3.12"
-    }
-  },
-  {
-    "src": "static/**",
-    "use": "@vercel/static"
+{
+    "devCommand": "uvicorn app:app --host 0.0.0.0 --port 3000",
+    "builds": [
+      {
+        "src": "app.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "app.py"
+      }
+    ],
+    "installCommand": "pip install -r requirements.txt"
   }
-]
+  
