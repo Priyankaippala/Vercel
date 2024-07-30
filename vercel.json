@@ -1,19 +1,15 @@
-{
-    "version": 2,
-    "builds": [
-      {
-        "src": "app.py",
-        "use": "@vercel/python",
-        "config": { 
-          "maxLambdaSize": "15mb",
-          "buildCommand": "./build.sh"
-        }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app.py"
-      }
-    ]
+"builds": [
+  {
+    "src": "app.py",
+    "use": "@vercel/python",
+    "config": { 
+      "maxLambdaSize": "50mb",
+      "buildCommand": "./build.sh",
+      "pythonVersion": "3.12"
+    }
+  },
+  {
+    "src": "static/**",
+    "use": "@vercel/static"
   }
+]
